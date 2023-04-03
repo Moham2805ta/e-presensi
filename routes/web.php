@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PresensiController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +35,15 @@ Route::middleware(['auth:karyawan'])->group(function () {
 
     //Presensi
     Route::get('/presensi/create', [PresensiController::class, 'create']);
+    Route::post('/presensi/store', [PresensiController::class, 'store']);
+
+    //Edit Profile
+    Route::get('/editprofile', [PresensiController::class, 'editprofile']);
+    Route::post('presensi/{nik}/updateprofile', [PresensiController::class, 'updateprofile']);
+
+    Route::get('reset_password', function() {
+        DB::table('karyawan')->where('nik', '12345')->update(['password'=> Hash::make('12345')]);
+    });
 });
 
 
