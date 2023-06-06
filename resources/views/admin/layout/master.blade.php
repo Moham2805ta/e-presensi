@@ -3,7 +3,7 @@
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Bootstrap 5 Side Bar Navigation</title>
+        <title>e-presensi</title>
         <!-- bootstrap 5 css -->
         <link
           rel="stylesheet"
