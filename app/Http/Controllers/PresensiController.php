@@ -46,14 +46,15 @@ class PresensiController extends Controller
         $image = $request->image;
         // echo $image;
         // die;
+
         $folderPath = "public/uploads/absensi/";
-        $formatName = $nik . "-" . $tgl_presensi. "-" . $ket;
+        $formatName = $nik . "-" . $tgl_presensi . "-" . $ket;
         $image_parts = explode(";base64", $image);
         $image_base64 = base64_decode($image_parts[1]);
-        $fileName = $formatName. ".png";
+        $fileName = $formatName . ".png";
         $file = $folderPath . $fileName;
 
-        if($radius > 20) {
+        if($radius > 300000) {
             echo "error|Maaf, Anda tidak berada didalam lingkup sekolah, Silahkan memasuki lingkup sekolah terlebih dahulu";
         } else {
 
@@ -79,6 +80,7 @@ class PresensiController extends Controller
                     'lokasi_in' => $lokasi
                 ];
                 $simpan = DB::table('presensi')->insert($data);
+                // dump($data);
                 if($simpan) {
                     echo 'success|Terima kasih, Selamat Bekerja!|in';
                     Storage::put($file, $image_base64);

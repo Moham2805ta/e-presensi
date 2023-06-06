@@ -13,8 +13,12 @@ class Karyawan extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public $timestamps = false;
+
     protected $table = "karyawan";
     protected $primaryKey = "nik";
+    public $incrementing = false; // menonaktifkan incrementing pada kolom kunci utama
+    protected $guarded = []; 
     protected $fillable = [
         'nik',
         'nama_lengkap',
